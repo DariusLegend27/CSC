@@ -25,6 +25,7 @@ namespace Task_3_Bearer
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
         }
     }
 }

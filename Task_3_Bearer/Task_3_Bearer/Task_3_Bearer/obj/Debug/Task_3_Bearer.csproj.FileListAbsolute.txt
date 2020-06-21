@@ -106,8 +106,8 @@ C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\bin\System.Web.Http.Owin.xml
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.csprojAssemblyReference.cache
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.csproj.CoreCompileInputs.cache
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.csproj.CopyComplete
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.dll
 C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.pdb
+C:\Singapore Polytechnic\CSC_Assignment_1\CSC\Task_3_Bearer\Task_3_Bearer\Task_3_Bearer\obj\Debug\Task_3_Bearer.csprojAssemblyReference.cache

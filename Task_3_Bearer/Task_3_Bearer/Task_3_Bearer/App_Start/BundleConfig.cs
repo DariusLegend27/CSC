@@ -25,7 +25,7 @@ namespace Task_3_Bearer
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
           "~/Scripts/knockout-{version}.js",
-          "~/Scripts/app.js"));
+          "~/Scripts/app2.js"));
         }
     }
 }

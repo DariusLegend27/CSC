@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -13,9 +14,17 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using Task_3_Bearer.Models;
 using Task_3_Bearer.Providers;
 using Task_3_Bearer.Results;
+
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Diagnostics;
 
 namespace Task_3_Bearer.Controllers
 {
@@ -318,26 +327,68 @@ namespace Task_3_Bearer.Controllers
             return logins;
         }
 
+        public static CaptchaResponse ValidateCaptcha(string response)
+        {
+
+            Debug.WriteLine("Response token : " + response);
+            string secret = "6LddhKcZAAAAAHbYP64QIztFcWKRL2LOARL - 3Wji";
+            var client = new WebClient();
+            var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+
+            return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult.ToString());
+        }
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
+            CaptchaResponse response = ValidateCaptcha(model.TokenRecaptcha);
+
+            Debug.WriteLine("Boolean validate: " + response.Success);
+
+            if (response.Success && ModelState.IsValid)
+            {
+                //if (!ModelState.IsValid)
+                //{
+                //    return BadRequest(ModelState);
+                //}
+
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                return Ok();
+
+            }
+            else
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            return Ok();
+            //var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+            //IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            //if (!result.Succeeded)
+            //{
+            //    return GetErrorResult(result);
+            //}
+
+            //return Ok();
+
         }
 
         // POST api/Account/RegisterExternal

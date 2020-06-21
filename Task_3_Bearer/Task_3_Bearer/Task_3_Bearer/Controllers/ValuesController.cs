@@ -19,7 +19,8 @@ namespace Task_3_Bearer.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            var userName = this.RequestContext.Principal.Identity.Name;
+            return String.Format("Hello, {0}.", userName);
         }
 
         // POST api/values

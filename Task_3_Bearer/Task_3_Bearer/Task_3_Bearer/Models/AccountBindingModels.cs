@@ -48,6 +48,10 @@ namespace Task_3_Bearer.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Token Recaptcha")]
+        public string TokenRecaptcha { get; set; }
     }
 
     public class RegisterExternalBindingModel
