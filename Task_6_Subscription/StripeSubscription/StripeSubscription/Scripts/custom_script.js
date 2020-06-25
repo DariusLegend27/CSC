@@ -22,17 +22,48 @@ var style = {
 };
 
 
-var customerId = "cus_HWaiaUveJOjQYW"
-var priceId = "price_1GxRMQEm7UeRho0hRDJwNVFJ"
-var paymentMethodId = "card_1GxYqkEm7UeRho0hgbKc3nZz"
+var customerId = "cus_HWwXGcZ0O82P5H"
+var paymentMethodId = "card_1GxsoAEm7UeRho0hWVWtkDD6"
 var cardElement = elements.create("card", { style: style });
 cardElement.mount("#card-element");
 
-$('#addPaymentButton').click(function () {
-    console.dir("Hello")
-    //createPaymentMethod(cardElement, customerId, priceId)
-    createSubscription(customerId, paymentMethodId, priceId)
+//$('#addPaymentButton').click(function () {
+//    console.dir("Hello")
+//    //createPaymentMethod(cardElement, customerId, priceId)
+//    createSubscription(customerId, paymentMethodId, priceId)
+//})
+
+var basicPriceId = "price_1GxsxhEm7UeRho0hY05QdIUk";
+
+$('#5dollarPlanButton').click(function () {
+    console.dir("5")
+    createSubscription(customerId, paymentMethodId, basicPriceId)
 })
+
+var premiumPriceId = "price_1GxsyQEm7UeRho0hIcE45XZm";
+
+$('#15dollarPlanButton').click(function () {
+    console.dir("15")
+    createSubscription(customerId, paymentMethodId, premiumPriceId)
+})
+
+
+var basicSubId = "";
+
+$('#cancel5dollarPlanButton').click(function () {
+    console.dir("5")
+    cancelSubscription(basicSubId)
+})
+
+var premiumSubId = "sub_HWyRPIsk1oKx35";
+
+$('#cancel15dollarPlanButton').click(function () {
+    console.dir("15")
+    cancelSubscription(premiumSubId)
+})
+
+
+
 
 cardElement.on('change', showCardError);
 
@@ -81,10 +112,11 @@ function createSubscription(customerId, paymentMethodId, priceId) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(data)
     }).done(function (data) {
-        console.dir(data)
-        console.dir("DONE Subscribe")
-    }).fail(function () {
+        console.dir("Sub Id: " + data.items.data[0].subscription)
+        $("#card-result").text("Payment Successful")
+    }).fail(function (data) {
         console.dir("FAIL Subscribe")
+        $("#card-result").text("Payment Failure")
     });
 
     console.dir(priceId);
@@ -138,30 +170,30 @@ function createSubscription(customerId, paymentMethodId, priceId) {
     //);
 }
 
-//function createCustomer() {
-//    let billingEmail = document.querySelector('#email').value;
-//    return fetch('/create-customer', {
-//        method: 'post',
-//        headers: {
-//            'Content-Type': 'application/json'
-//        },
-//        body: JSON.stringify({
-//            email: billingEmail
-//        })
-//    })
-//        .then(response => {
-//            return response.json();
-//        })
-//        .then(result => {
-//            // result.customer.id is used to map back to the customer object
-//            // result.setupIntent.client_secret is used to create the payment method
-//            return result;
-//        });
-//}
+
+function cancelSubscription(subscriptionId) {
+    var data = {
+        subscriptionId: subscriptionId,
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/Billing/cancelSubscription',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data)
+    }).done(function (data) {
+        console.dir("DONEn CANCEL")
+        $("#card-result-2").text("Cancel Subscription Successful")
+    }).fail(function () {
+        console.dir("FAIL CANCEL")
+        $("#card-result-2").text("Cancel Subscription Fail")
+    });
+}
+
 
 function createCust(){
 
-    let billingEmail = "hello@gmail.com";
+    let billingEmail = "mackymore@gmail.com";
 
     var data = {
         email: billingEmail,

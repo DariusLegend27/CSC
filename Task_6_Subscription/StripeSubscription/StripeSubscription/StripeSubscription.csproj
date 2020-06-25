@@ -178,7 +178,9 @@
     </Compile>
     <Compile Include="Models\CreateCustomerRequest.cs" />
     <Compile Include="Models\CreateCustomerResponse.cs" />
+    <Compile Include="Models\CreateSubscriptionDeleteRequest.cs" />
     <Compile Include="Models\CreateSubscriptionRequest.cs" />
+    <Compile Include="Models\PauseSubscriptionRequest.cs" />
     <Compile Include="Models\StripeChargeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

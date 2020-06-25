@@ -25,7 +25,39 @@ namespace StripeSubscription.Controllers
     [System.Web.Http.RoutePrefix("api/Billing")]
     public class BillingController : ApiController
     {
+        [System.Web.Http.Route("pauseSubscription")]
+        public IHttpActionResult pauseSubscription([FromBody] PauseSubscriptionRequest req)
+        {
+            StripeConfiguration.ApiKey = "sk_test_51GwkVOEm7UeRho0hO5rphVpK53d8xTsWQfcY8g90cwPH0GkMBeIhjUAczHR6ofaogdIXrZNhL1BJZKhHQLXXmjaw00LV46UtML";
 
+            Debug.WriteLine("Value: " + req.Subscription);
+
+            var options = new SubscriptionUpdateOptions
+            {
+                PauseCollection = new SubscriptionPauseCollectionOptions
+                {
+                    Behavior = "mark_uncollectible",
+                },
+            };
+            var service = new SubscriptionService();
+            var subscription = service.Update("sub_GTbTiykEwMRog0", options);
+
+            return Ok(subscription);
+        }
+
+
+        [System.Web.Http.Route("cancelSubscription")]
+        public IHttpActionResult cancelSubscription([FromBody] CreateSubscriptionDeleteRequest req)
+        {
+            StripeConfiguration.ApiKey = "sk_test_51GwkVOEm7UeRho0hO5rphVpK53d8xTsWQfcY8g90cwPH0GkMBeIhjUAczHR6ofaogdIXrZNhL1BJZKhHQLXXmjaw00LV46UtML";
+            var service = new SubscriptionService();
+
+            Debug.WriteLine("Value: " + req.Subscription);
+
+            var subscription = service.Cancel(req.Subscription, null);
+
+            return Ok(subscription);
+        }
 
         [System.Web.Http.Route("CreateSubscription")]
         public IHttpActionResult CreateSubscription([FromBody] CreateSubscriptionRequest req)
@@ -66,7 +98,7 @@ namespace StripeSubscription.Controllers
                 },
             };
 
-            Debug.WriteLine("Value 2 ");
+            Debug.WriteLine("Value 2");
 
             subscriptionOptions.AddExpand("latest_invoice.payment_intent");
 

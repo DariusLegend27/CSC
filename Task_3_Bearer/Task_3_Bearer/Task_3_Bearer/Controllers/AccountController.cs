@@ -335,6 +335,8 @@ namespace Task_3_Bearer.Controllers
             var client = new WebClient();
             var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
 
+            Debug.WriteLine("JSON Result: "  +  jsonResult.ToString());
+
             return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult.ToString());
         }
 
@@ -353,6 +355,7 @@ namespace Task_3_Bearer.Controllers
                 //{
                 //    return BadRequest(ModelState);
                 //}
+
 
                 var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
