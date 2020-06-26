@@ -80,3 +80,9 @@ C:\TheRealSEP\CSC\ProductStore\ProductStore\obj\Debug\ProductStore.csproj.CopyCo
 C:\TheRealSEP\CSC\ProductStore\ProductStore\obj\Debug\ProductStore.dll
 C:\TheRealSEP\CSC\ProductStore\ProductStore\obj\Debug\ProductStore.pdb
 C:\TheRealSEP\CSC\ProductStore\ProductStore\obj\Debug\ProductStore.csprojAssemblyReference.cache
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.Core.dll
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.S3.dll
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.Core.pdb
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.Core.xml
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.S3.pdb
+C:\TheRealSEP\CSC\ProductStore\ProductStore\bin\AWSSDK.S3.xml
