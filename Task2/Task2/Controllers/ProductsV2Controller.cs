@@ -22,6 +22,8 @@ namespace Task2.Controllers
         }
 
         //Get by id
+        [HttpGet]
+        [Route("api/v2/products/id")]
         public Product GetProduct(int id)
         {
             Product item = repository.Get(id);
@@ -40,6 +42,7 @@ namespace Task2.Controllers
         }
 
         //addd
+
         public HttpResponseMessage PostProduct(Product item)
         {
             item = repository.Add(item);
